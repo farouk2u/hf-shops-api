@@ -1,6 +1,12 @@
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+    methods:  [POST]
+    prefix: /api
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@ApiBundle/Controller/'
     type: annotation
+    prefix: /api
+
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

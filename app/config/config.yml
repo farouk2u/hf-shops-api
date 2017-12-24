@@ -70,7 +70,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: ApiBundle\Entity\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
@@ -98,9 +98,9 @@ fos_rest:
             json: true
             xml: true
 
-
     format_listener:
         rules:
+            - { path: ^/api/doc/lab, priorities: [ json ], fallback_format: html, prefer_extension: true }
             - { path: ^/api/doc, priorities: [ html ], fallback_format: html, prefer_extension: true }
             - { path: ^/, priorities: [ json ], fallback_format: html, prefer_extension: true }
 
@@ -124,3 +124,13 @@ nelmio_cors:
         max_age: 0
         hosts: []
         forced_allow_origin_value: '*'
+
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        ApiBundle\Entity\Client
+    access_token_class:  ApiBundle\Entity\AccessToken
+    refresh_token_class: ApiBundle\Entity\RefreshToken
+    auth_code_class:     ApiBundle\Entity\AuthCode
+    service:
+            user_provider: fos_user.user_provider.username

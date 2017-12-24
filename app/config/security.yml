@@ -14,23 +14,33 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
+        oauth_token:
+            pattern:    ^/api/oauth/v2/token
+            security:   false
 
-            logout:       true
-            anonymous:    true
-            # activate different ways to authenticate
+        oauth_register:
+            pattern:    ^/api/register
+            security:   false
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+#        oauth_authorize:
+#            pattern:    ^/oauth/v2/auth
+            # Add your favorite authentication process here
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+        api_doc:                                   # Everyone can access the access Doc URL.
+            pattern: ^/api/doc
+            security: false
+
+        api:
+            pattern:    ^/api
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  false # can be omitted as its default value
+
+
+
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }
