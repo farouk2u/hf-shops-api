@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Shop
  *
- * @ORM\Table(name="shop")
+ * @ORM\Table(name="shops")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\ShopRepository")
  */
 class Shop
@@ -52,14 +52,14 @@ class Shop
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="latitude", type="float", precision=10, scale=10)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="longitude", type="float", precision=10, scale=10)
      */
     private $longitude;
 

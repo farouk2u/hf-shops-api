@@ -1,0 +1,85 @@
+[{
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c4"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Gushkool",
+	"email": "leilaware@gushkool.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.81134, 33.95564]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c5"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Datagene",
+	"email": "leilaware@datagene.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.83746, 33.91183]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c6"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Silodyne",
+	"email": "leilaware@silodyne.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.75175, 33.96853]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c7"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Canopoly",
+	"email": "leilaware@canopoly.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.77404, 33.80354]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c8"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Sonique",
+	"email": "leilaware@sonique.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.74938, 33.83436]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26c9"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Quiltigen",
+	"email": "leilaware@quiltigen.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.84286, 33.96579]
+	}
+}, {
+	"_id": {
+		"$oid": "5a0c6711fb3aac66aafe26ca"
+	},
+	"picture": "http://placehold.it/150x150",
+	"name": "Infotrips",
+	"email": "leilaware@infotrips.com",
+	"city": "Rabat",
+	"location": {
+		"type": "Point",
+		"coordinates": [-6.80604, 33.94889]
+	}
+}]
