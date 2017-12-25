@@ -24,7 +24,6 @@ class UsersFixtures extends Fixture {
 
         $user =  new User();
 
-        $user->setUsername('user1');
         $user->setEmail('user1@email.com');
         $user->setPlainPassword('pass123');
         $user->setEnabled(1);

@@ -104,7 +104,9 @@ class RegistrationController extends Controller
             FOSUserEvents::REGISTRATION_SUCCESS, $event
         );
 
+        /** @var User $user */
         $user->setEnabled(1);
+        $user->addRole('ROLE_USER');
         $user->setPlainPassword( $password );
 
         $userManager->updateUser($user);
