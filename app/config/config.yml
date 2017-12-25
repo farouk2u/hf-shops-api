@@ -114,6 +114,14 @@ nelmio_api_doc:
             description: Coding Challenge
             version: 1.0.0
 
+        security_definitions:
+            api_key:
+                type: apiKey
+                name: api_key
+                in: header
+            security:
+                api_key: []
+
 nelmio_cors:
     defaults:
         allow_credentials: false

@@ -1,0 +1,46 @@
+<?php
+
+namespace ApiBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Shop", inversedBy="likedUsers")
+     * @ORM\JoinTable(name="users_like_shops")
+     */
+     private $likedShops;
+
+
+
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Shop", inversedBy="disLikedUsers")
+     * @ORM\JoinTable(name="users_dislike_shops")
+     */
+     private $disLikedShops;
+
+
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}

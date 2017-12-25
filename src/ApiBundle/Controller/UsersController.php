@@ -13,9 +13,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Swagger\Annotations as SWG;
 use ApiBundle\Entity\User;
 use Nelmio\ApiDocBundle\Annotation\Model;
-use Symfony\Component\Serializer\Encoder\JsonDecode;
 
-class DefaultController extends Controller
+
+class UsersController extends Controller
 {
     /**
      * @Route("/oauth/v2/token", name="fake_oAuth", methods={"POST"})
@@ -79,5 +79,66 @@ class DefaultController extends Controller
         // Fake Empty function to generate @ApiDoc
         return new JsonResponse([]);
     }
-    
+
+
+    /**
+     * @Route("me/shops/liked", name="liked_shops_list", methods={"GET"})
+     * @SWG\Get(
+     *     path="/api/me/shops/liked",
+     *     operationId="shopsList",
+     *     description="Get lis of liked shops",
+     *     produces={"application/json"},
+     *     tags={"Users"},
+     *
+     *     @SWG\Parameter(name="Authorization", in="header", required=true, type="string", default="Bearer TOKEN", description="Authorization"),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success"
+     *     )
+     * )
+     */
+    public function likedShopsAction()
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $shops = $user->getLikedShops();
+
+        return [
+            'totalCount' => count($shops),
+            'shops' => $shops
+        ];
+    }
+
+
+
+    /**
+     * @Route("me/shops/disliked", name="disliked_shops_list", methods={"GET"})
+     * @SWG\Get(
+     *     path="/api/me/shops/disliked",
+     *     operationId="shopsList",
+     *     description="Get lis of disliked shops",
+     *     produces={"application/json"},
+     *     tags={"Users"},
+     *
+     *     @SWG\Parameter(name="Authorization", in="header", required=true, type="string", default="Bearer TOKEN", description="Authorization"),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success"
+     *     )
+     * )
+     */
+    public function disLikedShopsAction()
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $shops = $user->getDisLikedShops();
+
+        return [
+            'totalCount' => count($shops),
+            'shops' => $shops
+        ];
+    }
+
 }
