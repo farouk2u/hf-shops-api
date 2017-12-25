@@ -37,12 +37,6 @@ class RegistrationController extends Controller
      *        type="object",
      *        @SWG\Property(
      *             type="string",
-     *             property="username",
-     *             type="string",
-     *             example="user123",
-     *        ),
-     *        @SWG\Property(
-     *             type="string",
      *             property="email",
      *             type="string",
      *             example="email@mail.ma",

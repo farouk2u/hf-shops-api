@@ -44,6 +44,20 @@ class User extends BaseUser
         // your own logic
     }
 
+
+    public function setEmail($email)
+    {
+        parent::setUsername($email);
+        return parent::setEmail($email);
+    }
+
+    public function setEmailCanonical($emailCanonical)
+    {
+        parent::setUsernameCanonical($emailCanonical);
+        return parent::setEmailCanonical($emailCanonical);
+    }
+
+
     /**
      * Add likedShop
      *
