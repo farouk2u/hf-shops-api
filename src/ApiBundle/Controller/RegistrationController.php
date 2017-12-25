@@ -120,8 +120,9 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @param  Request $request
+     * @param Request $request
      * @param  FormInterface $form
+     * @internal param Request $request
      */
     private function processForm(Request $request, FormInterface $form)
     {

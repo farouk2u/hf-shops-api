@@ -2,13 +2,16 @@
 
 namespace ApiBundle\Controller;
 
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Swagger\Annotations as SWG;
 use ApiBundle\Entity\User;
 use Nelmio\ApiDocBundle\Annotation\Model;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
 
 class DefaultController extends Controller
 {
@@ -73,4 +76,6 @@ class DefaultController extends Controller
         // Fake Empty function to generate @ApiDoc
         return new JsonResponse([]);
     }
+
+
 }
