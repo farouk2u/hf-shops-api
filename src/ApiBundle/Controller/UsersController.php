@@ -141,4 +141,29 @@ class UsersController extends Controller
         ];
     }
 
+    /**
+     * @Route("me", name="me", methods={"GET"})
+     * @SWG\Get(
+     *     path="/api/me",
+     *     operationId="shopsList",
+     *     description="Get Current user",
+     *     produces={"application/json"},
+     *     tags={"Users"},
+     *
+     *     @SWG\Parameter(name="Authorization", in="header", required=true, type="string", default="Bearer TOKEN", description="Authorization"),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success"
+     *     )
+     * )
+     */
+    public function meAction()
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $user;
+
+    }
+
 }

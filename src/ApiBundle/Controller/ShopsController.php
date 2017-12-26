@@ -84,9 +84,9 @@ class ShopsController extends Controller
     }
 
     /**
-     * @Route("shops/{id}/unlike", methods={"DELETE"})
+     * @Route("shops/{id}/like", methods={"DELETE"})
      * @SWG\Delete(
-     *     path="/api/shops/{id}/unlike",
+     *     path="/api/shops/{id}/like",
      *     operationId="shopsList",
      *     description="Like shop",
      *     produces={"application/json"},

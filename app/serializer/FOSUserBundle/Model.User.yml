@@ -1,0 +1,17 @@
+FOS\UserBundle\Model\User:
+    exclusion_policy: ALL
+    properties :
+        id:
+            expose: true
+
+        email:
+            expose: true
+
+        likedShops:
+            expose: true
+
+        disLikedShops:
+            expose: true
+
+        lastLogin:
+            expose: true
