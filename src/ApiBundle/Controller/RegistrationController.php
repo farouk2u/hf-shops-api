@@ -71,8 +71,10 @@ class RegistrationController extends Controller
         $checkUserEmail = $em->getRepository("ApiBundle:User")->findByEmail($email);
 
         if($checkUserUsername || $checkUserEmail){
-            throw new \Exception("Username or email already exist",401);
+
+            throw new BadRequestHttpException("Username or email already exist");
         }
+
 
         /** @var \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');

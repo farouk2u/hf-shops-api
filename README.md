@@ -8,7 +8,7 @@ Setup
 
 1.Clone project
 ````
-git clone 
+git clone https://github.com/farouk2u/hf-shops-api.git
 ````
 
 2.Install dependencies 
@@ -31,7 +31,12 @@ php bin/console doctrine:fixtures:load
 php bin/console assets:install --symlink
 ````
 
-6.Enjoy 
+6.Get oAuth Credentials 
+```
+php bin/console doctrine:query:sql "SELECT concat(id, '_', random_id) as 'client_id', secret as 'client_secret' from client"
+```
+
+7.Enjoy 
 
 
 Credits (Used Bundles)

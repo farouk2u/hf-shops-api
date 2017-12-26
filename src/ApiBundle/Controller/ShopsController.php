@@ -7,6 +7,7 @@ use ApiBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Swagger\Annotations as SWG;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ShopsController extends Controller
 {
@@ -66,7 +67,7 @@ class ShopsController extends Controller
     public function likeAction(Shop $shop)
     {
         if(!$shop) {
-            // @TODO : throw exception
+            throw new NotFoundHttpException("Shop not found");
         }
 
         /** @var User $user */
@@ -80,7 +81,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $user;
+        return $user->getLikedShops();
     }
 
     /**
@@ -109,7 +110,7 @@ class ShopsController extends Controller
     public function unlikeAction(Shop $shop)
     {
         if(!$shop) {
-            // @TODO : throw exception
+            throw new NotFoundHttpException("Shop not found");
         }
 
         /** @var User $user */
@@ -122,7 +123,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $shop;
+        return $user->getLikedShops();
     }
 
     /**
@@ -151,7 +152,7 @@ class ShopsController extends Controller
     public function dislikeAction(Shop $shop)
     {
         if(!$shop) {
-            // @TODO : throw exception
+            throw new NotFoundHttpException("Shop not found");
         }
 
         /** @var User $user */
@@ -165,7 +166,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $user;
+        return $user->getDisLikedShops();
     }
 
     /**
@@ -195,7 +196,7 @@ class ShopsController extends Controller
     public function detailsAction(Shop $shop){
 
         if(!$shop) {
-            // @TODO : throw exception
+            throw new NotFoundHttpException("Shop not found");
         }
 
         return $shop;
