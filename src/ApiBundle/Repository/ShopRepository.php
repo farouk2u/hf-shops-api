@@ -19,14 +19,15 @@ class ShopRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findAllOrderedByDistance($latitude, $longitude){
 
+
+
         // Quick Excep Handling
         if(!$latitude || !$longitude) {
-
             return $this->findAll();
         }
 
         $query= $this->createQueryBuilder('s')
-            ->select('s')
+            ->select(['s.id', 's.name', 's.picture', 's.city', 's.email', 's.latitude', 's.longitude'])
             ->addSelect(
                 '( 3959 * acos(cos(radians(' . $latitude . '))' .
                 '* cos( radians( s.latitude ) )' .
@@ -38,9 +39,9 @@ class ShopRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('distance', 'ASC')
             ->getQuery();
 
+            $shops = $query->getResult();
 
-
-        return $query->getResult();
+            return $shops ;
 
     }
 }
