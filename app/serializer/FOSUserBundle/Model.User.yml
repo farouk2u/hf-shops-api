@@ -10,8 +10,14 @@ FOS\UserBundle\Model\User:
         likedShops:
             expose: true
 
+        likedShopsIds:
+             expose: true
+
         disLikedShops:
             expose: true
+
+        disLikedShopsIds:
+             expose: true
 
         lastLogin:
             expose: true

@@ -4,6 +4,7 @@ namespace ApiBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -92,6 +93,26 @@ class User extends BaseUser
         return $this->likedShops;
     }
 
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("liked_shops_ids")
+     *
+     * @return string
+     */
+    public function getLikedShopsIds()
+    {
+        $shopsIds = [];
+
+        foreach ($this->likedShops as $shop ){
+            $shopsIds[] = $shop->getId() ;
+        }
+
+        return $shopsIds;
+
+    }
+
+
     /**
      * Add disLikedShop
      *
@@ -124,5 +145,25 @@ class User extends BaseUser
     public function getDisLikedShops()
     {
         return $this->disLikedShops;
+    }
+
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("dis_liked_shops_ids")
+     *
+     * @return string
+     */
+    public function getDisLikedShopsIds()
+    {
+        $shopsIds = [];
+
+        foreach ($this->disLikedShops as $shop ){
+
+            $shopsIds[] = $shop->getId();
+        }
+
+        return $shopsIds;
+
     }
 }
