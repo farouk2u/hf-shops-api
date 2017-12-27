@@ -55,7 +55,7 @@ class UsersController extends Controller
      *             type="string",
      *             property="username",
      *             type="string",
-     *             example="email@founders.com",
+     *             example="user1@email.com",
      *        ),
      *        @SWG\Property(
      *             type="string",

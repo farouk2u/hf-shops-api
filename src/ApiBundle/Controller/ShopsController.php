@@ -7,6 +7,7 @@ use ApiBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Swagger\Annotations as SWG;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ShopsController extends Controller
@@ -19,7 +20,8 @@ class ShopsController extends Controller
      *     description="Get lis of shops",
      *     produces={"application/json"},
      *     tags={"Shops"},
-     *
+     *     @SWG\Parameter(name="latitude", in="query", required=true, type="string", default="31.6609186", description="latitude"),
+     *     @SWG\Parameter(name="longitude", in="query", required=true, type="string", default="-8.022834999999999", description="longitude"),
      *     @SWG\Parameter(name="Authorization", in="header", required=true, type="string", default="Bearer TOKEN", description="Authorization"),
      *     @SWG\Response(
      *         response=200,
@@ -27,11 +29,17 @@ class ShopsController extends Controller
      *     )
      * )
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $shopsRepo =  $this->getDoctrine()->getManager()->getRepository('ApiBundle:Shop');
 
-        $shops = $shopsRepo->findAll();
+        // Get geo coordinates
+        $latitude = $request->query->get('latitude');
+        $longitude = $request->query->get('longitude');
+
+
+        $shops = $this->getDoctrine()->getRepository('ApiBundle:Shop')
+                                       ->findAllOrderedByDistance($latitude, $longitude);
+
 
         return [
             'totalCount' => count($shops),
