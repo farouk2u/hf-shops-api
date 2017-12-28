@@ -89,7 +89,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $user->getLikedShops();
+        return $user;
     }
 
     /**
@@ -131,7 +131,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $user->getLikedShops();
+        return $user;
     }
 
     /**
@@ -174,7 +174,7 @@ class ShopsController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $user->getDisLikedShops();
+        return $user;
     }
 
     /**
