@@ -1,7 +1,7 @@
-Shops Coding Challenge
+Shops 
 ======================
 
-Shops Coding challenge **SYMFONY** API.
+Shops  **SYMFONY** API.
 
 Setup
 ------
